@@ -8,7 +8,7 @@ img_path = "/mount/src/streamlit_test/images/"
 st.write(os.listdir(img_path))
 st.write(img_path + '단데기.png')
 
-main_image = Image.open(img_path + '단데기.png')
+main_image = Image.open(img_path + '단데기.PNG')
 # st.set_page_config(
 #     page_title = "아무튼 웹페이지임",
 #     page_icon = path + "단데기"

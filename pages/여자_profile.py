@@ -5,8 +5,8 @@ import os
 
 target_sex = "여자"
 pjt_path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
-img_path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/images/"
-
+# img_path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/images/"
+img_path = "/mount/src/streamlit_test/images/"
 
 # st.set_page_config(
 #     page_title = "아무튼 웹페이지임",
