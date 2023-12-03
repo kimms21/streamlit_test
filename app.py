@@ -4,7 +4,7 @@ import os
 
 pjt_path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
 # img_path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/images/"
-img_path = "/mount/src/streamlit_test/images"
+img_path = "/mount/src/streamlit_test/images/"
 
 main_image = Image.open(img_path + '단데기.png')
 # st.set_page_config(
