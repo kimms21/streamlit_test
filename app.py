@@ -4,7 +4,7 @@ import os
 
 pjt_path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
 # img_path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/images/"
-img_path = "/mount/src/streamlit_test/"
+img_path = "/mount/src/streamlit_test/images/"
 st.write(os.listdir(img_path))
 st.write(img_path + '단데기.png')
 
