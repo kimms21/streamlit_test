@@ -37,7 +37,7 @@ with st.form("my_form"):
    row = [name,sex,age,height, job, mbti, introduce, openchat, permission]
    new_info = pd.DataFrame([row],columns = people_db.columns)
    added_db = pd.concat([people_db, new_info],axis = 0)
-   added_db.to_csv(path + "db/people.csv", index = False)
+   added_db.to_csv(path + "db/people.csv", index = False, encoding="utf-8-sig")
 
    if uploaded_file is not None:
       uploaded_image = Image.open(uploaded_file)
