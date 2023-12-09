@@ -17,14 +17,14 @@ people_db = pd.read_csv(path + "db/people.csv", encoding = "cp949")
 
 with st.form("my_form"):
    st.write("Inside the form")
-   name = st.text_input(label = "별명입력",placeholder = "단데기")
+   name = st.text_input(label = "별명입력",value = "단데기")
    sex = st.selectbox(label = "성별", options=["남자","여자"])
-   age = st.number_input(label = "나이",placeholder = 25)
-   height = st.number_input(label = "키(cm)",placeholder = 180)
-   job = st.text_input(label = "직업",placeholder = "번데기")
-   mbti = st.text_input(label="MBTI",placeholder = "ISTP")
-   introduce = st.text_area(label = "자기소개",placeholder = "난단데기임")
-   openchat = st.text_input(label="오픈챗_url",placeholder = "오픈챗주소")
+   age = st.number_input(label = "나이",value = 25)
+   height = st.number_input(label = "키(cm)",value = 180)
+   job = st.text_input(label = "직업",value = "번데기")
+   mbti = st.text_input(label="MBTI",value = "ISTP")
+   introduce = st.text_area(label = "자기소개",value = "난단데기임")
+   openchat = st.text_input(label="오픈챗_url",value = "오픈챗주소")
    permission = st.text_input(label="관리자코드")
    uploaded_file = st.file_uploader("Choose a file")
 
@@ -36,7 +36,7 @@ with st.form("my_form"):
       st.stop()
    
    if permission not in ["ms"]:
-      st.error('업로드 권한이 업습니다')
+      st.error('업로드 권한이 업습니다 관리자코드를 입력해주세요')
       st.stop()
 
    row = [name,sex,age,height, job, mbti, introduce, openchat, permission]
