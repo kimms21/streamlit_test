@@ -8,6 +8,7 @@ path = "/mount/src/streamlit_test/"
 
 
 
+
 main_image = Image.open(path + 'images/사랑동이.PNG')
 # st.set_page_config(
 #     page_title = "아무튼 웹페이지임",

@@ -7,7 +7,8 @@ from PIL import Image
 path = "/mount/src/streamlit_test/"
 
 
-people_db = pd.read_csv(path + "db/people.csv", encoding = "utf8")
+
+people_db = pd.read_csv(path + "db/people.csv", encoding = "cp949")
 # st.set_page_config(
 #     page_title = "아무튼 웹페이지임",
 #     page_icon = ""
@@ -33,11 +34,15 @@ with st.form("my_form"):
    if name in list(people_db["별명"]):
       st.error('중복된 별명이 있습니다')
       st.stop()
+   
+   if permission not in ["ms"]:
+      st.error('업로드 권한이 업습니다')
+      st.stop()
 
    row = [name,sex,age,height, job, mbti, introduce, openchat, permission]
    new_info = pd.DataFrame([row],columns = people_db.columns)
    added_db = pd.concat([people_db, new_info],axis = 0)
-   added_db.to_csv(path + "db/people.csv", index = False, encoding="utf-8-sig")
+   added_db.to_csv(path + "db/people.csv", index = False, encoding="cp949")
 
    if uploaded_file is not None:
       uploaded_image = Image.open(uploaded_file)
