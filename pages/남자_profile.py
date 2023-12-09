@@ -13,7 +13,7 @@ path = "/mount/src/streamlit_test/"
 #     page_icon = ""
 # )
 
-db = pd.read_excel(path+"db/people.xlsx")
+db = pd.read_csv(path+"db/people.csv")
 db_man = db[db["성별"]==target_sex]
 
 
