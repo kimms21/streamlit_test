@@ -13,7 +13,7 @@ path = "/mount/src/streamlit_test/"
 #     page_icon = ""
 # )
 
-db = pd.read_csv(path+"db/people.csv")
+db = pd.read_csv(path+"db/people.csv",encoding = "cp949")
 db_man = db[db["성별"]==target_sex]
 
 
