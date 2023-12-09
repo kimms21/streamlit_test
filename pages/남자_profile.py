@@ -26,8 +26,8 @@ cols = st.columns(len(man_list))
 for idx, row in db_man.iterrows():
    man_name, sex, age, height, job, mbti, introduce, opentalk, permission = row
    with cols[idx % 2]:
-      st.header(man_name.replace('.PNG', ''))
-      man_image = Image.open(path+"images/"+ target_sex + "/" + man_name+".PNG")
+      st.header(man_name)
+      man_image = Image.open(f"{path}images/{target_sex}/{man_name}.PNG")
       st.image(man_image)
       expander_stat = st.expander("profile")
       with expander_stat:
