@@ -7,7 +7,7 @@ from PIL import Image
 path = "/mount/src/streamlit_test/"
 
 
-people_db = pd.read_csv(path + "db/people.csv",encoding = "cp949")
+people_db = pd.read_csv(path + "db/people.csv",encoding = "utf8")
 # st.set_page_config(
 #     page_title = "아무튼 웹페이지임",
 #     page_icon = ""
