@@ -8,12 +8,14 @@ target_sex = "여자"
 # path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
 path = "/mount/src/streamlit_test/"
 
+
+
 # st.set_page_config(
 #     page_title = "아무튼 웹페이지임",
 #     page_icon = ""
 # )
 
-db = pd.read_csv(path+"db/people.csv",encoding = "utf8")
+db = pd.read_csv(path+"db/people.csv",encoding ="utf8")
 db_man = db[db["성별"]==target_sex]
 
 
