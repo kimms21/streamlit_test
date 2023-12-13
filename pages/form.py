@@ -2,17 +2,23 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image
+from deta import Deta
 
-# path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
-path = "/mount/src/streamlit_test/"
+path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
+# path = "/mount/src/streamlit_test/"
+deta_maleimage_key = "c0qgsalqfvg_rVDe7in3GYGd5gPPCWmQbsiF2emm5L8N"
+deta = Deta(st.secrets[deta_maleimage_key])
+# Initialize a project with project key from deta.
+project = Deta("image_male")
+
+# Define the drive to store the files.
+drive_name = 'image_male'
+drive = project.Drive(drive_name)
 
 
 
 people_db = pd.read_csv(path + "db/people.csv", encoding = "cp949")
-# st.set_page_config(
-#     page_title = "아무튼 웹페이지임",
-#     page_icon = ""
-# )
+
 
 
 with st.form("my_form"):
@@ -45,8 +51,12 @@ with st.form("my_form"):
    added_db.to_csv(path + "db/people.csv", index = False, encoding="cp949")
 
    if uploaded_file is not None:
+      bytes_data = uploaded_file.getvalue()
       uploaded_image = Image.open(uploaded_file)
       uploaded_image.save(f"{path}images/{sex}/{name}.PNG")
+      drive.put(f"{name}.PNG", data=bytes_data)
+
+
 
 
 st.success("전송완료!")
