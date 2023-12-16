@@ -1,20 +1,9 @@
 import streamlit as st
 from PIL import Image
-import os
 
-path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
-# path = "/mount/src/streamlit_test/"
-
-
-
-
-
-
+# path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
+path = "/mount/src/streamlit_test/"
 main_image = Image.open(path + 'images/사랑동이.PNG')
-# st.set_page_config(
-#     page_title = "아무튼 웹페이지임",
-#     page_icon = path + "단데기"
-# )
 
 st.title('Auto 소개')
 
