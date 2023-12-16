@@ -1,48 +1,50 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 from PIL import Image
-import os
+from deta import Deta
+import io
 
 target_sex = "여자"
-path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
-# path = "/mount/src/streamlit_test/"
 
 
+drive_name = 'people_image'
+db_name = 'people_feature'
+conn_image = Deta(st.secrets[drive_name])
+conn_db = Deta(st.secrets[db_name])
 
+# Define the drive to store the files.
 
+drive_image = conn_image.Drive(drive_name)
+db = conn_db.Base(db_name)
 
-# st.set_page_config(
-#     page_title = "아무튼 웹페이지임",
-#     page_icon = ""
-# )
-
-db = pd.read_csv(path+"db/people.csv",encoding ="cp949")
-db_man = db[db["성별"]==target_sex]
+people_json = db.fetch().items
+people_db = pd.DataFrame(people_json)
+db_man = people_db[people_db["sex"]==target_sex]
 
 
 st.title(f'{target_sex} Profile')
-man_list = os.listdir(path+"images/"+target_sex+"/")
-cols = st.columns(len(man_list))
+cols = st.columns(len(db_man))
 
 for idx, row in db_man.iterrows():
-   man_name, sex, age, height, job, mbti, introduce, opentalk, permission = row
+
    with cols[idx % 2]:
-      st.header(man_name)
-      man_image = Image.open(f"{path}images/{target_sex}/{man_name}.PNG")
-      st.image(man_image)
+      st.header(row["key"])
+      man_image_get =drive_image.get(f"{row['key']}.PNG").read()
+      man_image = Image.open(io.BytesIO(man_image_get))
+      man_image_resized = man_image.resize((256, 256))
+      st.image(man_image_resized)
       expander_stat = st.expander("profile")
       with expander_stat:
-         st.write(f"키 : {height}")
-         st.write(f"직업 : {job}")
-         st.write(f"MBTI : {mbti}")
+         st.write(f"키 : {row['height']}")
+         st.write(f"나이 : {row['age']}")
+         st.write(f"MBTI : {row['mbti']}")
 
       expander_introduce = st.expander("자기소개")
       with expander_introduce:
-         expander_introduce.write(introduce)
+         expander_introduce.write(row['introduce'])
       expander_opentalk = st.expander("오픈톡 링크")
       with expander_opentalk:
-         expander_opentalk.write(opentalk)
+         expander_opentalk.write(row['openchat'])
 
 
 

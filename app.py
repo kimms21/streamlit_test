@@ -16,7 +16,7 @@ main_image = Image.open(path + 'images/사랑동이.PNG')
 #     page_icon = path + "단데기"
 # )
 
-st.title('아무튼 웹페이지임')
+st.title('Auto 소개')
 
 st.image(main_image)
 st.sidebar.success("Select page")
