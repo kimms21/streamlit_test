@@ -27,24 +27,23 @@ cols = st.columns(len(db_man))
 
 for idx, row in db_man.iterrows():
 
-   with cols[idx % 2]:
-      st.header(row["key"])
-      man_image_get =drive_image.get(f"{row['key']}.PNG").read()
-      man_image = Image.open(io.BytesIO(man_image_get))
-      man_image_resized = man_image.resize((256, 256))
-      st.image(man_image_resized)
-      expander_stat = st.expander("profile")
-      with expander_stat:
-         st.write(f"키 : {row['height']}")
-         st.write(f"나이 : {row['age']}")
-         st.write(f"MBTI : {row['mbti']}")
+   st.header(row["key"])
+   man_image_get =drive_image.get(f"{row['key']}.PNG").read()
+   man_image = Image.open(io.BytesIO(man_image_get))
+   man_image_resized = man_image.resize((256, 256))
+   st.image(man_image_resized)
+   expander_stat = st.expander("profile")
+   with expander_stat:
+      st.write(f"키 : {row['height']}")
+      st.write(f"나이 : {row['age']}")
+      st.write(f"MBTI : {row['mbti']}")
 
-      expander_introduce = st.expander("자기소개")
-      with expander_introduce:
-         expander_introduce.write(row['introduce'])
-      expander_opentalk = st.expander("오픈톡 링크")
-      with expander_opentalk:
-         expander_opentalk.write(row['openchat'])
+   expander_introduce = st.expander("자기소개")
+   with expander_introduce:
+      expander_introduce.code(row['introduce'])
+   expander_opentalk = st.expander("오픈톡 링크")
+   with expander_opentalk:
+      expander_opentalk.write(row['openchat'])
 
 
 
