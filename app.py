@@ -36,8 +36,8 @@ if auth_status:
 
 
     auth.logout("logout","sidebar")
-    path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
-    # path = "/mount/src/streamlit_test/"
+    # path = "C:/Users/detri/OneDrive/바탕 화면/jupyter_home/streamlit_test/"
+    path = "/mount/src/streamlit_test/"
     main_image = Image.open('images/사랑동이.PNG')
 
     st.title('Auto 소개')
